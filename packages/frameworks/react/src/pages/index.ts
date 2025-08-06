@@ -1,5 +1,5 @@
 /**
- * DelVui React - Pages Export  
+ * DelvUI React - Pages Export  
  */
 
 // Placeholder - pages will be implemented here

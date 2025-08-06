@@ -1,27 +1,27 @@
 /**
- * DelVui React - Providers Export
+ * DelvUI React - Providers Export
  */
 
 import React, { createContext, useContext } from 'react';
 
 // Theme Provider (placeholder)
-interface DelVuiTheme {
+interface DelvUITheme {
   mode: 'light' | 'dark';
   colors: Record<string, any>;
 }
 
-const ThemeContext = createContext<DelVuiTheme>({
+const ThemeContext = createContext<DelvUITheme>({
   mode: 'light',
   colors: {},
 });
 
-export const useDelVuiTheme = () => useContext(ThemeContext);
+export const useDelvUITheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children, theme }: { 
   children: React.ReactNode; 
-  theme?: Partial<DelVuiTheme>; 
+  theme?: Partial<DelvUITheme>; 
 }) => {
-  const defaultTheme: DelVuiTheme = {
+  const defaultTheme: DelvUITheme = {
     mode: 'light',
     colors: {},
     ...theme,

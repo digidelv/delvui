@@ -1,5 +1,5 @@
 /**
- * DelVui React - Templates Export
+ * DelvUI React - Templates Export
  */
 
 // Placeholder - templates will be implemented here

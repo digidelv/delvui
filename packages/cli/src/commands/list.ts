@@ -1,5 +1,5 @@
 /**
- * DelVui CLI - List Command
+ * DelvUI CLI - List Command
  * List available components and templates
  */
 
@@ -13,7 +13,7 @@ interface ListOptions {
 }
 
 export async function listComponents(options: ListOptions): Promise<void> {
-  logger.info('DelVui Available Components and Templates\n');
+  logger.info('DelvUI Available Components and Templates\n');
 
   if (options.level) {
     await listByAtomicLevel(options.level, options);

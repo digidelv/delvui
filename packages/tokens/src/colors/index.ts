@@ -1,5 +1,5 @@
 /**
- * DelVui Design Tokens - Colors
+ * DelvUI Design Tokens - Colors
  * Complete color system with semantic naming
  */
 

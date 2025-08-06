@@ -1,5 +1,5 @@
 /**
- * DelVui CLI - Project Utilities
+ * DelvUI CLI - Project Utilities
  */
 
 import fs from 'fs-extra';
@@ -138,7 +138,7 @@ function getReactNativeTemplate(config: TemplateConfig) {
   return {
     files: {
       'App.tsx': getReactNativeAppContent(),
-      'src/components/DelVuiButton.tsx': getReactNativeButtonContent(),
+      'src/components/DelvUIButton.tsx': getReactNativeButtonContent(),
       'README.md': getReactNativeReadmeContent(),
       '.gitignore': getReactNativeGitignoreContent(),
       'app.json': getExpoConfigContent(),
@@ -271,7 +271,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to DelVui React App</h1>
+        <h1>Welcome to DelvUI React App</h1>
         <Button variant="primary" size="lg">
           Get Started
         </Button>
@@ -302,7 +302,7 @@ root.render(
 
 function getReactButtonContent(): string {
   return `import React from 'react';
-import { Button as DelVuiButton } from '@delvui/react';
+import { Button as DelvUIButton } from '@delvui/react';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -311,9 +311,9 @@ interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
   return (
-    <DelVuiButton variant="primary" onClick={onClick}>
+    <DelvUIButton variant="primary" onClick={onClick}>
       {children}
-    </DelVuiButton>
+    </DelvUIButton>
   );
 };`;
 }
@@ -325,8 +325,8 @@ function getReactHtmlContent(): string {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="DelVui React App" />
-    <title>DelVui React App</title>
+    <meta name="description" content="DelvUI React App" />
+    <title>DelvUI React App</title>
 </head>
 <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -336,9 +336,9 @@ function getReactHtmlContent(): string {
 }
 
 function getReactReadmeContent(): string {
-  return `# DelVui React App
+  return `# DelvUI React App
 
-This project was created with DelVui CLI.
+This project was created with DelvUI CLI.
 
 ## Available Scripts
 
@@ -347,9 +347,9 @@ This project was created with DelVui CLI.
 - \`npm test\` - Launches the test runner
 - \`npm run eject\` - Ejects from Create React App
 
-## DelVui Components
+## DelvUI Components
 
-This project includes DelVui React components:
+This project includes DelvUI React components:
 
 \`\`\`jsx
 import { Button, Input, Card } from '@delvui/react';
@@ -366,7 +366,7 @@ function MyComponent() {
 
 ## Learn More
 
-- [DelVui Documentation](https://delvui.dev)
+- [DelvUI Documentation](https://delvui.dev)
 - [React Documentation](https://reactjs.org)
 `;
 }
@@ -449,11 +449,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>DelVui Next.js App</title>
-        <meta name="description" content="Generated with DelVui CLI" />
+        <title>DelvUI Next.js App</title>
+        <meta name="description" content="Generated with DelvUI CLI" />
       </Head>
       <main>
-        <h1>Welcome to DelVui Next.js!</h1>
+        <h1>Welcome to DelvUI Next.js!</h1>
         <Button variant="primary">Get Started</Button>
       </main>
     </>
@@ -487,11 +487,11 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="layout">
       <header>
-        <nav>DelVui App</nav>
+        <nav>DelvUI App</nav>
       </header>
       <main>{children}</main>
       <footer>
-        <p>Powered by DelVui</p>
+        <p>Powered by DelvUI</p>
       </footer>
     </div>
   );
@@ -499,9 +499,9 @@ export default function Layout({ children }: LayoutProps) {
 }
 
 function getNextjsReadmeContent(): string {
-  return `# DelVui Next.js App
+  return `# DelvUI Next.js App
 
-This is a Next.js project created with DelVui CLI.
+This is a Next.js project created with DelvUI CLI.
 
 ## Getting Started
 
@@ -513,7 +513,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## DelVui Components
+## DelvUI Components
 
 \`\`\`jsx
 import { Button, Input, Card } from '@delvui/react';
@@ -578,14 +578,14 @@ function getVueAppContent(isVue3: boolean): string {
     return `<template>
   <div id="app">
     <header>
-      <h1>Welcome to DelVui Vue App</h1>
-      <DelVuiButton variant="primary">Get Started</DelVuiButton>
+      <h1>Welcome to DelvUI Vue App</h1>
+      <DelvUIButton variant="primary">Get Started</DelvUIButton>
     </header>
   </div>
 </template>
 
 <script setup lang="ts">
-import { DelVuiButton } from '@delvui/vue';
+import { DelvUIButton } from '@delvui/vue';
 </script>
 
 <style>
@@ -600,20 +600,20 @@ import { DelVuiButton } from '@delvui/vue';
     return `<template>
   <div id="app">
     <header>
-      <h1>Welcome to DelVui Vue 2 App</h1>
-      <DelVuiButton variant="primary">Get Started</DelVuiButton>
+      <h1>Welcome to DelvUI Vue 2 App</h1>
+      <DelvUIButton variant="primary">Get Started</DelvUIButton>
     </header>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { DelVuiButton } from '@delvui/vue';
+import { DelvUIButton } from '@delvui/vue';
 
 export default Vue.extend({
   name: 'App',
   components: {
-    DelVuiButton,
+    DelvUIButton,
   },
 });
 </script>`;
@@ -624,17 +624,17 @@ function getVueMainContent(isVue3: boolean): string {
   if (isVue3) {
     return `import { createApp } from 'vue';
 import App from './App.vue';
-import DelVui from '@delvui/vue';
+import DelvUI from '@delvui/vue';
 
 const app = createApp(App);
-app.use(DelVui);
+app.use(DelvUI);
 app.mount('#app');`;
   } else {
     return `import Vue from 'vue';
 import App from './App.vue';
-import DelVui from '@delvui/vue';
+import DelvUI from '@delvui/vue';
 
-Vue.use(DelVui);
+Vue.use(DelvUI);
 Vue.config.productionTip = false;
 
 new Vue({
@@ -658,8 +658,8 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  title: 'Hello DelVui!',
-  description: 'You are using DelVui with Vue.js',
+  title: 'Hello DelvUI!',
+  description: 'You are using DelvUI with Vue.js',
 });
 </script>`;
 }
@@ -670,7 +670,7 @@ function getVueHtmlContent(): string {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DelVui Vue App</title>
+    <title>DelvUI Vue App</title>
 </head>
 <body>
     <div id="app"></div>
@@ -680,9 +680,9 @@ function getVueHtmlContent(): string {
 }
 
 function getVueReadmeContent(): string {
-  return `# DelVui Vue App
+  return `# DelvUI Vue App
 
-This project was created with DelVui CLI.
+This project was created with DelvUI CLI.
 
 ## Project Setup
 
@@ -702,18 +702,18 @@ npm run dev
 npm run build
 \`\`\`
 
-## DelVui Components
+## DelvUI Components
 
 \`\`\`vue
 <template>
-  <DelVuiCard>
-    <DelVuiInput placeholder="Enter text" />
-    <DelVuiButton variant="primary">Submit</DelVuiButton>
-  </DelVuiCard>
+  <DelvUICard>
+    <DelvUIInput placeholder="Enter text" />
+    <DelvUIButton variant="primary">Submit</DelvUIButton>
+  </DelvUICard>
 </template>
 
 <script setup>
-import { DelVuiButton, DelVuiInput, DelVuiCard } from '@delvui/vue';
+import { DelvUIButton, DelvUIInput, DelvUICard } from '@delvui/vue';
 </script>
 \`\`\`
 `;
@@ -739,26 +739,26 @@ function getAngularAppTemplateContent(): string { return `<!-- Angular app templ
 function getAngularAppModuleContent(): string { return `// Angular app module content`; }
 function getAngularMainContent(): string { return `// Angular main content`; }
 function getAngularHtmlContent(): string { return `<!-- Angular HTML content -->`; }
-function getAngularReadmeContent(): string { return `# DelVui Angular App`; }
+function getAngularReadmeContent(): string { return `# DelvUI Angular App`; }
 function getAngularTsConfigContent(): string { return `{}`; }
 function getAngularJsonContent(): string { return `{}`; }
 
 function getReactNativeAppContent(): string { return `// React Native app content`; }
 function getReactNativeButtonContent(): string { return `// React Native button content`; }
-function getReactNativeReadmeContent(): string { return `# DelVui React Native App`; }
+function getReactNativeReadmeContent(): string { return `# DelvUI React Native App`; }
 function getReactNativeGitignoreContent(): string { return getGitignoreContent(); }
 function getExpoConfigContent(): string { return `{}`; }
 
 function getVanillaMainContent(): string { return `// Vanilla TypeScript main`; }
 function getVanillaButtonContent(): string { return `// Vanilla button component`; }
-function getVanillaHtmlContent(): string { return `<!DOCTYPE html><html><head><title>DelVui Vanilla App</title></head><body><div id="app"></div></body></html>`; }
-function getVanillaReadmeContent(): string { return `# DelVui Vanilla App`; }
+function getVanillaHtmlContent(): string { return `<!DOCTYPE html><html><head><title>DelvUI Vanilla App</title></head><body><div id="app"></div></body></html>`; }
+function getVanillaReadmeContent(): string { return `# DelvUI Vanilla App`; }
 function getVanillaViteConfigContent(): string { return `import { defineConfig } from 'vite'; export default defineConfig({});`; }
 
 function getStorybookMainContent(): string { return `// Storybook main config`; }
 function getStorybookPreviewContent(): string { return `// Storybook preview config`; }
 function getStorybookButtonStoryContent(): string { return `// Button story`; }
-function getStorybookReadmeContent(): string { return `# DelVui Storybook`; }
+function getStorybookReadmeContent(): string { return `# DelvUI Storybook`; }
 
 function getEslintConfig(): string { return `module.exports = {};`; }
 function getPrettierConfig(): string { return `{}`; }

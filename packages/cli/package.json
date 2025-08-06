@@ -1,7 +1,7 @@
 {
   "name": "@delvui/cli",
   "version": "1.0.34",
-  "description": "DelVui CLI - Project scaffolding, component generation, and boilerplates",
+  "description": "DelvUI CLI - Project scaffolding, component generation, and boilerplates",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {

@@ -1,5 +1,5 @@
 /**
- * DelVui React - Organisms Export
+ * DelvUI React - Organisms Export
  */
 
 // Placeholder - organisms will be implemented here

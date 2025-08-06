@@ -1,7 +1,7 @@
 {
   "name": "@delvui/react",
   "version": "1.0.0",
-  "description": "DelVui React - Enterprise React Component Library with Atomic Design",
+  "description": "DelvUI React - Enterprise React Component Library with Atomic Design",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "lib/index.d.ts",

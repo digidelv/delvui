@@ -1,5 +1,5 @@
 /**
- * DelVui CLI - Generate Command
+ * DelvUI CLI - Generate Command
  * Generate atomic design components
  */
 
@@ -189,8 +189,8 @@ function getReactComponentTemplate(type: string, name: string, options: Generate
   const atomicMetadata = getAtomicMetadata(type, name);
   
   return `/**
- * DelVui ${name} ${type}
- * Generated with DelVui CLI
+ * DelvUI ${name} ${type}
+ * Generated with DelvUI CLI
  */
 
 import React from 'react';
@@ -279,8 +279,8 @@ function getVueComponentTemplate(type: string, name: string, options: GenerateOp
 
 <script setup lang="ts">
 /**
- * DelVui ${name} ${type}
- * Generated with DelVui CLI
+ * DelvUI ${name} ${type}
+ * Generated with DelvUI CLI
  */
 
 interface ${name}Props {
@@ -307,8 +307,8 @@ function getAngularComponentTemplate(type: string, name: string, options: Genera
   const kebabName = name.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '');
   
   return `/**
- * DelVui ${name} ${type}
- * Generated with DelVui CLI
+ * DelvUI ${name} ${type}
+ * Generated with DelvUI CLI
  */
 
 import { Component, Input } from '@angular/core';
@@ -535,7 +535,7 @@ export const Default: Story = {
 function getDocsTemplate(type: string, name: string): string {
   return `# ${name} ${type.charAt(0).toUpperCase() + type.slice(1)}
 
-Generated with DelVui CLI.
+Generated with DelvUI CLI.
 
 ## Description
 

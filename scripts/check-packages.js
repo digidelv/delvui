@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * DelVui Package Verification Script
+ * DelvUI Package Verification Script
  * Checks packages before publishing
  */
 
@@ -17,7 +17,7 @@ const PACKAGES = [
 ];
 
 async function checkPackages() {
-  console.log(chalk.blue.bold('🔍 Checking DelVui packages...\n'));
+  console.log(chalk.blue.bold('🔍 Checking DelvUI packages...\n'));
 
   let allGood = true;
 

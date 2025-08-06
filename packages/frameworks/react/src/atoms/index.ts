@@ -1,5 +1,5 @@
 /**
- * DelVui React - Atoms Export
+ * DelvUI React - Atoms Export
  */
 
 export { Button, ButtonAtom } from './Button/Button';

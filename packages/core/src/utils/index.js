@@ -1,6 +1,6 @@
 "use strict";
 /**
- * DelVui Core - Utility Functions
+ * DelvUI Core - Utility Functions
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateComponentName = exports.generateComponentId = exports.isValidAtomicLevel = void 0;

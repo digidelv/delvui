@@ -1,6 +1,6 @@
 /**
- * DelVui CLI - Add Command
- * Add DelVui components to existing projects
+ * DelvUI CLI - Add Command
+ * Add DelvUI components to existing projects
  */
 
 import { execSync } from 'child_process';
@@ -20,7 +20,7 @@ interface AddOptions {
 
 export async function addCommand(components: string[], options: AddOptions): Promise<void> {
   try {
-    logger.info('Adding DelVui components to your project...');
+    logger.info('Adding DelvUI components to your project...');
 
     // Detect project framework if not specified
     const framework = options.framework || await detectFramework();
@@ -36,7 +36,7 @@ export async function addCommand(components: string[], options: AddOptions): Pro
     // Setup configuration if needed
     await setupConfiguration(framework);
 
-    logger.success('DelVui components added successfully!');
+    logger.success('DelvUI components added successfully!');
     printUsageInstructions(framework);
 
   } catch (error) {
@@ -202,7 +202,7 @@ async function setupNextjsConfiguration(cwd: string): Promise<void> {
   
   if (await fs.pathExists(nextConfigPath)) {
     logger.info('Next.js configuration detected - you may need to update it manually');
-    logger.info('Add DelVui CSS import to your _app.tsx:');
+    logger.info('Add DelvUI CSS import to your _app.tsx:');
     logger.info(chalk.gray("import '@delvui/react/styles';"));
   }
 }
@@ -212,7 +212,7 @@ async function setupNuxtConfiguration(cwd: string): Promise<void> {
   
   if (await fs.pathExists(nuxtConfigPath)) {
     logger.info('Nuxt configuration detected - you may need to update it manually');
-    logger.info('Add DelVui to your modules in nuxt.config.ts');
+    logger.info('Add DelvUI to your modules in nuxt.config.ts');
   }
 }
 
@@ -221,8 +221,8 @@ async function setupAngularConfiguration(cwd: string): Promise<void> {
   
   if (await fs.pathExists(angularJsonPath)) {
     logger.info('Angular configuration detected - you may need to update it manually');
-    logger.info('Import DelVuiModule in your app.module.ts:');
-    logger.info(chalk.gray("import { DelVuiModule } from '@delvui/angular';"));
+    logger.info('Import DelvUIModule in your app.module.ts:');
+    logger.info(chalk.gray("import { DelvUIModule } from '@delvui/angular';"));
   }
 }
 
@@ -241,13 +241,13 @@ function printUsageInstructions(framework: string): void {
     case 'vue':
     case 'nuxt':
       logger.info(chalk.cyan('Vue/Nuxt:'));
-      logger.log(`${chalk.gray('import { DelVuiButton, DelVuiInput } from \'@delvui/vue\';')}\n`);
-      logger.log(`${chalk.gray('<DelVuiButton variant="primary">Click me</DelVuiButton>')}`);
+      logger.log(`${chalk.gray('import { DelvUIButton, DelvUIInput } from \'@delvui/vue\';')}\n`);
+      logger.log(`${chalk.gray('<DelvUIButton variant="primary">Click me</DelvUIButton>')}`);
       break;
 
     case 'angular':
       logger.info(chalk.cyan('Angular:'));
-      logger.log(`${chalk.gray('import { DelVuiModule } from \'@delvui/angular\';')}\n`);
+      logger.log(`${chalk.gray('import { DelvUIModule } from \'@delvui/angular\';')}\n`);
       logger.log(`${chalk.gray('<dv-button variant="primary">Click me</dv-button>')}`);
       break;
 

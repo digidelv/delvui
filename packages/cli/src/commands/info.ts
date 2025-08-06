@@ -1,5 +1,5 @@
 /**
- * DelVui CLI - Info Command
+ * DelvUI CLI - Info Command
  */
 
 import os from 'os';
@@ -14,7 +14,7 @@ interface InfoOptions {
 }
 
 export async function showInfo(options: InfoOptions): Promise<void> {
-  console.log(chalk.blue.bold('DelVui System Information\n'));
+  console.log(chalk.blue.bold('DelvUI System Information\n'));
 
   // Basic system info
   console.log(chalk.cyan('System:'));
@@ -25,9 +25,9 @@ export async function showInfo(options: InfoOptions): Promise<void> {
   console.log(`  NPM: ${await getNpmVersion()}`);
   console.log('');
 
-  // DelVui CLI info
+  // DelvUI CLI info
   const cliInfo = await getCliInfo();
-  console.log(chalk.cyan('DelVui CLI:'));
+  console.log(chalk.cyan('DelvUI CLI:'));
   console.log(`  Version: ${cliInfo.version}`);
   console.log(`  Location: ${cliInfo.location}`);
   console.log('');
@@ -82,16 +82,16 @@ async function showProjectInfo(): Promise<void> {
       console.log(`  Name: ${packageJson.name || 'Unknown'}`);
       console.log(`  Version: ${packageJson.version || 'Unknown'}`);
       
-      // Check for DelVui dependencies
+      // Check for DelvUI dependencies
       const delvuiDeps = Object.keys({
         ...packageJson.dependencies,
         ...packageJson.devDependencies
       }).filter(dep => dep.startsWith('@delvui/'));
 
       if (delvuiDeps.length > 0) {
-        console.log(`  DelVui packages: ${delvuiDeps.join(', ')}`);
+        console.log(`  DelvUI packages: ${delvuiDeps.join(', ')}`);
       } else {
-        console.log(`  DelVui packages: ${chalk.yellow('None found')}`);
+        console.log(`  DelvUI packages: ${chalk.yellow('None found')}`);
       }
     } else {
       console.log(`  ${chalk.yellow('No package.json found')}`);

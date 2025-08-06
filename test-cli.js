@@ -11,7 +11,7 @@ const path = require('path');
 const CLI_PATH = path.join(__dirname, 'packages/cli/bin/delvui.js');
 const TEST_DIR = path.join(__dirname, 'test-project');
 
-console.log('🧪 Testing DelVui CLI functionality...\n');
+console.log('🧪 Testing DelvUI CLI functionality...\n');
 
 async function testCLI() {
   try {

@@ -1,7 +1,7 @@
 {
   "name": "@delvui/tokens",
   "version": "1.0.0",
-  "description": "DelVui Design Tokens - Colors, Typography, Spacing, and More",
+  "description": "DelvUI Design Tokens - Colors, Typography, Spacing, and More",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "lib/index.d.ts",

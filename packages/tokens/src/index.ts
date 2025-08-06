@@ -1,5 +1,5 @@
 /**
- * DelVui Tokens - Main Entry Point
+ * DelvUI Tokens - Main Entry Point
  * Export all design tokens
  */
 
@@ -63,6 +63,6 @@ export const TOKENS_VERSION = '1.0.0';
 export const TOKENS_INFO = {
   name: '@delvui/tokens',
   version: TOKENS_VERSION,
-  description: 'DelVui Design Tokens - Colors, Typography, Spacing, and More',
+  description: 'DelvUI Design Tokens - Colors, Typography, Spacing, and More',
   buildDate: new Date().toISOString(),
 } as const;

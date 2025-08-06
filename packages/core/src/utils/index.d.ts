@@ -1,5 +1,5 @@
 /**
- * DelVui Core - Utility Functions
+ * DelvUI Core - Utility Functions
  */
 export declare const isValidAtomicLevel: (level: string) => boolean;
 export declare const generateComponentId: (level: string, name: string) => string;

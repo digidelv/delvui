@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * DelVui CLI Binary
- * Global executable for DelVui design system
+ * DelvUI CLI Binary
+ * Global executable for DelvUI design system
  */
 
 const path = require('path');
@@ -21,6 +21,6 @@ try {
   }
   require(cliPath);
 } catch (error) {
-  console.error('Failed to start DelVui CLI:', error.message);
+  console.error('Failed to start DelvUI CLI:', error.message);
   process.exit(1);
 }

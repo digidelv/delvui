@@ -1,0 +1,78 @@
+{
+  "name": "@delvui/react",
+  "version": "1.0.0",
+  "description": "DelvUI React - Enterprise React Component Library",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
+  "files": [
+    "lib",
+    "es",
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "import": "./es/index.js",
+      "require": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./atoms": {
+      "import": "./es/atoms/index.js",
+      "require": "./lib/atoms/index.js",
+      "types": "./lib/atoms/index.d.ts"
+    },
+    "./styles": "./dist/styles.css"
+  },
+  "scripts": {
+    "build": "npm run build:js && npm run build:styles",
+    "build:js": "tsc",
+    "build:styles": "postcss src/styles/index.css -o dist/styles.css",
+    "dev": "tsc -w",
+    "test": "jest",
+    "lint": "eslint src --ext .ts,.tsx",
+    "storybook": "storybook dev -p 6006"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "design-system",
+    "atomic-design",
+    "delvui"
+  ],
+  "author": "Aman Soni <aman.soni.se@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@delvui/core": "workspace:*",
+    "@delvui/tokens": "workspace:*",
+    "clsx": "^2.0.0",
+    "framer-motion": "^10.16.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.0.0",
+    "postcss": "^8.4.0",
+    "postcss-cli": "^10.1.0",
+    "@storybook/react": "^7.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digidelv/delvui",
+    "directory": "frameworks/react"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

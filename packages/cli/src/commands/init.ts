@@ -1,6 +1,6 @@
 /**
- * DelVui CLI - Init Command
- * Initialize new projects with DelVui boilerplates
+ * DelvUI CLI - Init Command
+ * Initialize new projects with DelvUI boilerplates
  */
 
 import inquirer from 'inquirer';
@@ -120,7 +120,7 @@ export async function initCommand(projectName: string, options: InitOptions): Pr
     // Additional configuration based on template
     const config = await gatherTemplateConfig(template);
 
-    console.log(`\n🚀 Creating DelVui project "${finalProjectName}" with ${template} template...\n`);
+    console.log(`\n🚀 Creating DelvUI project "${finalProjectName}" with ${template} template...\n`);
 
     const tasks = new Listr([
       {
@@ -402,27 +402,27 @@ function getTemplateInstructions(template: string): string[] {
   const instructions: Record<string, string[]> = {
     react: [
       'Start building components in src/components/',
-      'Use DelVui components from @delvui/react',
+      'Use DelvUI components from @delvui/react',
       'Run "npm run storybook" to view component documentation',
     ],
     nextjs: [
       'Pages are in pages/ or app/ directory (depending on version)',
-      'Add DelVui components to your pages',
+      'Add DelvUI components to your pages',
       'Configure your styling solution in next.config.js',
     ],
     vue: [
       'Components are in src/components/',
-      'Import DelVui components from @delvui/vue', 
+      'Import DelvUI components from @delvui/vue', 
       'Use Vue DevTools for debugging',
     ],
     angular: [
       'Components are in src/app/',
-      'Import DelVui modules in your app.module.ts',
+      'Import DelvUI modules in your app.module.ts',
       'Use Angular CLI for generating new components',
     ],
     'react-native': [
       'Start with App.tsx',
-      'Import DelVui components from @delvui/react-native',
+      'Import DelvUI components from @delvui/react-native',
       'Use Expo CLI for development and deployment',
     ],
     storybook: [

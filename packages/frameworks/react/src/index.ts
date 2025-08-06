@@ -1,5 +1,5 @@
 /**
- * DelVui React - Main Entry Point
+ * DelvUI React - Main Entry Point
  * Export all components organized by atomic design levels
  */
 
@@ -39,7 +39,7 @@ export const ATOMIC_DESIGN_VERSION = '1.0.0';
 export const LIBRARY_INFO = {
   name: '@delvui/react',
   version: VERSION,
-  description: 'DelVui React - Enterprise React Component Library with Atomic Design',
+  description: 'DelvUI React - Enterprise React Component Library with Atomic Design',
   atomicDesignVersion: ATOMIC_DESIGN_VERSION,
   framework: 'react',
   buildDate: new Date().toISOString(),

@@ -1,5 +1,5 @@
 /**
- * DelVui Core - Common Types
+ * DelvUI Core - Common Types
  */
 export interface ComponentMetadata {
     name: string;

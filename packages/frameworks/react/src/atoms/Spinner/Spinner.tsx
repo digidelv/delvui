@@ -1,5 +1,5 @@
 /**
- * DelVui React - Spinner Atom
+ * DelvUI React - Spinner Atom
  */
 
 import React from 'react';

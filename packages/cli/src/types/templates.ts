@@ -1,5 +1,5 @@
 /**
- * DelVui CLI - Template Types
+ * DelvUI CLI - Template Types
  */
 
 export interface ProjectTemplate {

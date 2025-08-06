@@ -1,5 +1,5 @@
 /**
- * DelVui Core - Main Entry Point
+ * DelvUI Core - Main Entry Point
  * Export all atomic design types and utilities
  */
 
@@ -20,7 +20,7 @@ export const ATOMIC_DESIGN_VERSION = '1.0.0';
 export const CORE_INFO = {
   name: '@delvui/core',
   version: CORE_VERSION,
-  description: 'DelVui Core - Atomic Design Types and Utilities',
+  description: 'DelvUI Core - Atomic Design Types and Utilities',
   atomicDesignVersion: ATOMIC_DESIGN_VERSION,
   buildDate: new Date().toISOString(),
 } as const;

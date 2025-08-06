@@ -1,5 +1,5 @@
 /**
- * DelVui CLI - Build Command
+ * DelvUI CLI - Build Command
  */
 
 import { logger } from '../utils/logger.js';
@@ -14,7 +14,7 @@ interface BuildOptions {
 
 export async function buildCommand(options: BuildOptions): Promise<void> {
   try {
-    logger.info('Building DelVui components...');
+    logger.info('Building DelvUI components...');
     
     // Implementation for building components
     logger.success('Build completed successfully!');

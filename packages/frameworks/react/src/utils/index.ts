@@ -1,5 +1,5 @@
 /**
- * DelVui React - Utilities Export
+ * DelvUI React - Utilities Export
  */
 
 // Placeholder - utilities will be implemented here

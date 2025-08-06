@@ -1,5 +1,5 @@
 /**
- * DelVui CLI - Logger Utility
+ * DelvUI CLI - Logger Utility
  */
 
 import chalk from 'chalk';

@@ -1,8 +1,8 @@
-# DelVui Design System
+# DelvUI Design System
 
 🚀 **Enterprise-grade design system with atomic design architecture**
 
-DelVui is a comprehensive, multi-framework design system built with atomic design principles. It provides consistent, accessible, and beautiful components for React, Vue, Angular, React Native, and Vanilla JavaScript.
+DelvUI is a comprehensive, multi-framework design system built with atomic design principles. It provides consistent, accessible, and beautiful components for React, Vue, Angular, React Native, and Vanilla JavaScript.
 
 [![npm version](https://badge.fury.io/js/%40delvui%2Freact.svg)](https://www.npmjs.com/package/@delvui/react)
 [![Build Status](https://github.com/digidelv/delvui/workflows/CI/badge.svg)](https://github.com/digidelv/delvui/actions)
@@ -23,7 +23,7 @@ DelVui is a comprehensive, multi-framework design system built with atomic desig
 
 ## 🚀 Quick Start
 
-### Install DelVui CLI
+### Install DelvUI CLI
 
 ```bash
 npm install -g @delvui/cli
@@ -33,13 +33,13 @@ npm install -g @delvui/cli
 
 ```bash
 # Interactive project creation
-delvui init my-app
+delv init my-app
 
 # Or with specific template
-delvui init my-app --template react
-delvui init my-app --template nextjs
-delvui init my-app --template vue
-delvui init my-app --template angular
+delv init my-app --template react
+delv init my-app --template nextjs
+delv init my-app --template vue
+delv init my-app --template angular
 ```
 
 ### Add to existing project
@@ -97,18 +97,18 @@ function App() {
 
 ```vue
 <template>
-  <DelVuiProvider theme="light">
+  <DelvUIProvider theme="light">
     <dv-card>
       <dv-input placeholder="Enter your name" />
       <dv-button variant="primary" size="md">
         Submit
       </dv-button>
     </dv-card>
-  </DelVuiProvider>
+  </DelvUIProvider>
 </template>
 
 <script setup>
-import { DelVuiProvider, DvCard, DvInput, DvButton } from '@delvui/vue';
+import { DelvUIProvider, DvCard, DvInput, DvButton } from '@delvui/vue';
 </script>
 ```
 
@@ -116,7 +116,7 @@ import { DelVuiProvider, DvCard, DvInput, DvButton } from '@delvui/vue';
 
 ```typescript
 import { Component } from '@angular/core';
-import { DelVuiModule } from '@delvui/angular';
+import { DelvUIModule } from '@delvui/angular';
 
 @Component({
   selector: 'app-root',
@@ -130,14 +130,14 @@ import { DelVuiModule } from '@delvui/angular';
       </dv-card>
     </dv-theme-provider>
   `,
-  imports: [DelVuiModule]
+  imports: [DelvUIModule]
 })
 export class AppComponent {}
 ```
 
 ## 🧬 Atomic Design Structure
 
-DelVui follows atomic design principles:
+DelvUI follows atomic design principles:
 
 ### Atoms
 Basic building blocks - buttons, inputs, labels, icons
@@ -173,33 +173,33 @@ import { HomePage, LoginPage, DashboardPage } from '@delvui/react/pages';
 
 ```bash
 # Create new project
-delvui init <project-name>
+delv init <project-name>
 
 # Generate components
-delvui generate atom Button
-delvui generate molecule SearchBox  
-delvui generate organism Header
+delv generate atom Button
+delv generate molecule SearchBox  
+delv generate organism Header
 
 # Add components to existing project
-delvui add Button Input Card
+delv add Button Input Card
 
-# Update DelVui packages
-delvui update
+# Update DelvUI packages
+delv update
 
 # Build components
-delvui build
+delv build
 
 # Start development server
-delvui serve
+delv serve
 
 # List available components
-delvui list
+delv list
 
 # Show system info
-delvui info
+delv info
 
 # Check setup health
-delvui doctor
+delv doctor
 ```
 
 ## 🎨 Customization
@@ -292,7 +292,7 @@ npm run release              # Publish to npm
 
 ## 🔄 Versioning
 
-DelVui uses [Changesets](https://github.com/changesets/changesets) for version management:
+DelvUI uses [Changesets](https://github.com/changesets/changesets) for version management:
 
 1. Make your changes
 2. Run `npm run changeset` to document changes
@@ -313,5 +313,5 @@ MIT © [Your Company](https://github.com/digidelv)
 ---
 
 <p align="center">
-  <strong>Built with ❤️ by the DelVui team</strong>
+  <strong>Built with ❤️ by the DelvUI team</strong>
 </p>

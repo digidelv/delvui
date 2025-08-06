@@ -1,5 +1,5 @@
 /**
- * DelVui Core - Utility Functions
+ * DelvUI Core - Utility Functions
  */
 
 export const isValidAtomicLevel = (level: string): boolean => {

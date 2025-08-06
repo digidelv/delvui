@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * DelVui Installation Script
+ * DelvUI Installation Script
  * Handles workspace installation and setup
  */
 
@@ -9,7 +9,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-console.log('🚀 Setting up DelVui workspace...');
+console.log('🚀 Setting up DelvUI workspace...');
 
 // Check Node version
 const nodeVersion = process.version;
@@ -49,7 +49,7 @@ buildDirs.forEach(dir => {
   }
 });
 
-console.log('🎉 DelVui workspace setup complete!');
+console.log('🎉 DelvUI workspace setup complete!');
 console.log('\n📋 Next steps:');
 console.log('  npm run build     # Build all packages');
 console.log('  npm run dev       # Start development mode');

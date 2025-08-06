@@ -1,7 +1,7 @@
 {
   "name": "@delvui/core",
   "version": "1.0.0",
-  "description": "DelVui Core - Atomic Design Types and Utilities",
+  "description": "DelvUI Core - Atomic Design Types and Utilities",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "lib/index.d.ts",

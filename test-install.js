@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
 /**
- * DelVui Test Installation
+ * DelvUI Test Installation
  * Verify that packages can be imported correctly
  */
 
-console.log('🧪 Testing DelVui package imports...\n');
+console.log('🧪 Testing DelvUI package imports...\n');
 
 try {
   // Test core package

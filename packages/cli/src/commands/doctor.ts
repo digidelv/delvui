@@ -1,5 +1,5 @@
 /**
- * DelVui CLI - Doctor Command
+ * DelvUI CLI - Doctor Command
  */
 
 import fs from 'fs-extra';
@@ -9,7 +9,7 @@ import chalk from 'chalk';
 import { logger } from '../utils/logger.js';
 
 export async function runDoctor(): Promise<void> {
-  console.log(chalk.blue.bold('🏥 DelVui Health Check\n'));
+  console.log(chalk.blue.bold('🏥 DelvUI Health Check\n'));
 
   let allGood = true;
 
@@ -25,12 +25,12 @@ export async function runDoctor(): Promise<void> {
   // Check project structure
   allGood = allGood && await checkProjectStructure();
   
-  // Check DelVui dependencies
-  allGood = allGood && await checkDelVuiDependencies();
+  // Check DelvUI dependencies
+  allGood = allGood && await checkDelvUIDependencies();
 
   console.log('');
   if (allGood) {
-    logger.success('🎉 Everything looks good! Your DelVui setup is healthy.');
+    logger.success('🎉 Everything looks good! Your DelvUI setup is healthy.');
   } else {
     logger.warn('⚠️  Some issues were found. Please review the recommendations above.');
   }
@@ -111,7 +111,7 @@ async function checkProjectStructure(): Promise<boolean> {
   }
 }
 
-async function checkDelVuiDependencies(): Promise<boolean> {
+async function checkDelvUIDependencies(): Promise<boolean> {
   const cwd = process.cwd();
   
   try {
@@ -127,7 +127,7 @@ async function checkDelVuiDependencies(): Promise<boolean> {
       const delvuiPackages = Object.keys(allDeps).filter(dep => dep.startsWith('@delvui/'));
       
       if (delvuiPackages.length > 0) {
-        logger.success(`DelVui packages found: ${delvuiPackages.join(', ')}`);
+        logger.success(`DelvUI packages found: ${delvuiPackages.join(', ')}`);
         
         // Check for version consistency
         const versions = new Set(
@@ -135,20 +135,20 @@ async function checkDelVuiDependencies(): Promise<boolean> {
         );
         
         if (versions.size > 1) {
-          logger.warn('Different DelVui package versions detected. Consider using the same version for all packages.');
+          logger.warn('Different DelvUI package versions detected. Consider using the same version for all packages.');
         }
         
         return true;
       } else {
-        logger.info('No DelVui packages found in current project');
-        logger.info('Run "delv add" to add DelVui to your project');
+        logger.info('No DelvUI packages found in current project');
+        logger.info('Run "delv add" to add DelvUI to your project');
         return true;
       }
     } else {
       return true; // No project structure
     }
   } catch (error) {
-    logger.error('Error checking DelVui dependencies:', error);
+    logger.error('Error checking DelvUI dependencies:', error);
     return false;
   }
 }

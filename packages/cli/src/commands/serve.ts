@@ -1,5 +1,5 @@
 /**
- * DelVui CLI - Serve Command
+ * DelvUI CLI - Serve Command
  */
 
 import { logger } from '../utils/logger.js';

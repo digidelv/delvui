@@ -1,5 +1,5 @@
 /**
- * DelVui Core - Atomic Design Exports
+ * DelvUI Core - Atomic Design Exports
  */
 
 export * from './atoms/types';

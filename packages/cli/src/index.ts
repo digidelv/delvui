@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * DelVui CLI - Main Entry Point
+ * DelvUI CLI - Main Entry Point
  * Provides project scaffolding, component generation, and boilerplates
  */
 
@@ -50,7 +50,7 @@ ${chalk.cyan('╚═════════════════════
 // Program setup
 program
   .name('delvui')
-  .description('DelVui CLI - Enterprise Design System Toolkit')
+  .description('DelvUI CLI - Enterprise Design System Toolkit')
   .version(packageJson.version)
   .hook('preAction', () => {
     if (process.argv.includes('--help') || process.argv.includes('-h')) {
@@ -63,7 +63,7 @@ program
 program
   .command('init')
   .alias('create')
-  .description('Initialize a new project with DelVui')
+  .description('Initialize a new project with DelvUI')
   .argument('[project-name]', 'Name of the project')
   .option('-t, --template <template>', 'Project template to use', 'react')
   .option('-p, --preset <preset>', 'Configuration preset', 'default')
@@ -89,7 +89,7 @@ program
 
 program
   .command('add')
-  .description('Add DelVui components to existing project')
+  .description('Add DelvUI components to existing project')
   .argument('[components...]', 'Component names to add')
   .option('-f, --framework <framework>', 'Target framework', 'react')
   .option('-v, --version <version>', 'Specific version to install')
@@ -100,7 +100,7 @@ program
 program
   .command('update')
   .alias('upgrade')
-  .description('Update DelVui packages to latest versions')
+  .description('Update DelvUI packages to latest versions')
   .option('-c, --check', 'Check for updates without installing')
   .option('-i, --interactive', 'Interactive update mode')
   .option('--canary', 'Update to canary versions')
@@ -108,7 +108,7 @@ program
 
 program
   .command('build')
-  .description('Build DelVui components for production')
+  .description('Build DelvUI components for production')
   .option('-f, --framework <framework>', 'Target framework')
   .option('-o, --output <path>', 'Output directory', 'dist')
   .option('-w, --watch', 'Watch for changes')
@@ -119,7 +119,7 @@ program
 program
   .command('serve')
   .alias('dev')
-  .description('Start development server with DelVui components')
+  .description('Start development server with DelvUI components')
   .option('-p, --port <port>', 'Port number', '3000')
   .option('-h, --host <host>', 'Host address', 'localhost')
   .option('--open', 'Open browser automatically')
@@ -141,7 +141,7 @@ program
 
 program
   .command('info')
-  .description('Show information about DelVui installation')
+  .description('Show information about DelvUI installation')
   .option('--env', 'Show environment information')
   .option('--deps', 'Show dependency information')
   .action(async (options) => {
@@ -151,7 +151,7 @@ program
 
 program
   .command('doctor')
-  .description('Check DelVui setup and dependencies')
+  .description('Check DelvUI setup and dependencies')
   .action(async () => {
     const { runDoctor } = await import('./commands/doctor.js');
     await runDoctor();

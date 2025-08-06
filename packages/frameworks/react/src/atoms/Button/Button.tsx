@@ -1,12 +1,12 @@
 /**
- * DelVui React - Button Atom
+ * DelvUI React - Button Atom
  * A flexible, accessible button component following atomic design principles
  */
 
 import React, { forwardRef } from 'react';
 import { AtomProps } from '@delvui/core';
 import clsx from 'clsx';
-import { useDelVuiTheme } from '../../providers';
+import { useDelvUITheme } from '../../providers';
 import { Spinner } from '../Spinner/Spinner';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -161,7 +161,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   type = 'button',
   ...props
 }, ref) => {
-  const theme = useDelVuiTheme();
+  const theme = useDelvUITheme();
   
   // Base classes
   const baseClasses = [

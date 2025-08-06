@@ -1,6 +1,6 @@
 "use strict";
 /**
- * DelVui Core - Main Entry Point
+ * DelvUI Core - Main Entry Point
  * Export all atomic design types and utilities
  */
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
@@ -33,7 +33,7 @@ exports.ATOMIC_DESIGN_VERSION = '1.0.0';
 exports.CORE_INFO = {
     name: '@delvui/core',
     version: exports.CORE_VERSION,
-    description: 'DelVui Core - Atomic Design Types and Utilities',
+    description: 'DelvUI Core - Atomic Design Types and Utilities',
     atomicDesignVersion: exports.ATOMIC_DESIGN_VERSION,
     buildDate: new Date().toISOString(),
 };
