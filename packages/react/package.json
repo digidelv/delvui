@@ -1,0 +1,129 @@
+{
+  "name": "@delvui/react",
+  "version": "1.0.0",
+  "description": "DelVui React - Enterprise React Component Library with Atomic Design",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
+  "files": [
+    "lib",
+    "es",
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "import": "./es/index.js",
+      "require": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./atoms": {
+      "import": "./es/atoms/index.js",
+      "require": "./lib/atoms/index.js",
+      "types": "./lib/atoms/index.d.ts"
+    },
+    "./molecules": {
+      "import": "./es/molecules/index.js",
+      "require": "./lib/molecules/index.js",
+      "types": "./lib/molecules/index.d.ts"
+    },
+    "./organisms": {
+      "import": "./es/organisms/index.js",
+      "require": "./lib/organisms/index.js",
+      "types": "./lib/organisms/index.d.ts"
+    },
+    "./templates": {
+      "import": "./es/templates/index.js",
+      "require": "./lib/templates/index.js",
+      "types": "./lib/templates/index.d.ts"
+    },
+    "./pages": {
+      "import": "./es/pages/index.js",
+      "require": "./lib/pages/index.js",
+      "types": "./lib/pages/index.d.ts"
+    },
+    "./hooks": {
+      "import": "./es/hooks/index.js",
+      "require": "./lib/hooks/index.js",
+      "types": "./lib/hooks/index.d.ts"
+    },
+    "./providers": {
+      "import": "./es/providers/index.js",
+      "require": "./lib/providers/index.js",
+      "types": "./lib/providers/index.d.ts"
+    },
+    "./utils": {
+      "import": "./es/utils/index.js",
+      "require": "./lib/utils/index.js",
+      "types": "./lib/utils/index.d.ts"
+    },
+    "./styles": "./dist/styles.css"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "clean": "rimraf lib es dist",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "type-check": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [
+    "react",
+    "components", 
+    "ui",
+    "design-system",
+    "atomic-design",
+    "typescript",
+    "delvui"
+  ],
+  "author": "Your Company",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@delvui/core": "file:../core",
+    "@delvui/tokens": "file:../tokens",
+    "clsx": "^2.0.0",
+    "react-focus-lock": "^2.9.4",
+    "react-use-measure": "^2.1.1",
+    "framer-motion": "^10.16.0",
+    "@floating-ui/react": "^0.24.0",
+    "react-aria": "^3.28.0",
+    "react-stately": "^3.26.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.0.0",
+    "rimraf": "^5.0.0",
+    "@storybook/react": "^7.4.0",
+    "@storybook/addon-essentials": "^7.4.0",
+    "@storybook/addon-docs": "^7.4.0",
+    "@storybook/addon-a11y": "^7.4.0",
+    "postcss": "^8.4.0",
+    "postcss-cli": "^10.1.0",
+    "autoprefixer": "^10.4.0",
+    "sass": "^1.66.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digidelv/delvui",
+    "directory": "packages/react"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

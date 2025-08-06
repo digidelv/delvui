@@ -1,0 +1,81 @@
+{
+  "name": "@delvui/design-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DelvUI - Design System with Atomic Architecture",
+  "keywords": [
+    "design-system",
+    "ui-components",
+    "atomic-design",
+    "react",
+    "vue",
+    "angular",
+    "react-native"
+  ],
+  "author": "Aman Soni aman.soni.se@gmail.com",
+  "license": "MIT",
+  "workspaces": [
+    "packages/core",
+    "packages/tokens",
+    "packages/react",
+    "packages/vue",
+    "packages/angular",
+    "packages/react-native",
+    "packages/vanilla",
+    "packages/builder-core",
+    "packages/builder-react",
+    "packages/cli",
+    "apps/showcase",
+    "apps/storybook",
+    "apps/playground"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "type-check": "npm run type-check --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present",
+    "bootstrap": "npm install",
+    "publish:all": "npm run build && npm run publish --workspaces --if-present",
+    "storybook": "npm run storybook --workspace=apps/storybook",
+    "showcase": "npm run dev --workspace=apps/showcase",
+    "generate": "npm run generate --workspace=packages/cli",
+    "build:tokens": "npm run build --workspace=packages/tokens",
+    "build:core": "npm run build --workspace=packages/core",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish",
+    "publish:manual": "node scripts/publish.js",
+    "pre-publish": "npm run build && npm test",
+    "check-packages": "node scripts/check-packages.js"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20.0.0",
+    "concurrently": "^8.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^30.0.5",
+    "jest-environment-jsdom": "^30.0.5",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.0.0",
+    "rimraf": "^5.0.0",
+    "ts-jest": "^29.4.1",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digidelv/delvui.git"
+  },
+  "homepage": "https://github.com/digidelv/delvui#readme",
+  "bugs": {
+    "url": "https://github.com/digidelv/delvui/issues"
+  }
+}

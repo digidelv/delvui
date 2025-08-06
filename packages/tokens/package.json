@@ -1,0 +1,61 @@
+{
+  "name": "@delvui/tokens",
+  "version": "1.0.0",
+  "description": "DelVui Design Tokens - Colors, Typography, Spacing, and More",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "es", 
+    "dist",
+    "src",
+    "tokens.json"
+  ],
+  "exports": {
+    ".": {
+      "import": "./es/index.js",
+      "require": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./css": "./dist/tokens.css",
+    "./scss": "./dist/tokens.scss",
+    "./json": "./tokens.json",
+    "./js": "./lib/tokens.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "clean": "rimraf lib es dist tokens.json",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "design-tokens", 
+    "design-system", 
+    "css-variables", 
+    "scss", 
+    "tailwind",
+    "delvui"
+  ],
+  "author": "Your Company",
+  "license": "MIT",
+  "dependencies": {
+    "color2k": "^2.0.0",
+    "polished": "^4.2.2"
+  },
+  "devDependencies": {
+    "style-dictionary": "^3.8.0",
+    "typescript": "^5.0.0",
+    "rimraf": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digidelv/delvui",
+    "directory": "packages/tokens"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

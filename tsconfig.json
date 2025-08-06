@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["DOM", "DOM.Iterable", "ES2020"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@delvui/core": ["packages/core/src"],
+      "@delvui/tokens": ["packages/tokens/src"],
+      "@delvui/react": ["packages/react/src"],
+      "@delvui/vue": ["packages/vue/src"],
+      "@delvui/angular": ["packages/angular/src"],
+      "@delvui/react-native": ["packages/react-native/src"],
+      "@delvui/vanilla": ["packages/vanilla/src"],
+      "@delvui/builder-core": ["packages/builder-core/src"],
+      "@delvui/builder-react": ["packages/builder-react/src"],
+      "@delvui/cli": ["packages/cli/src"]
+    }
+  },
+  "include": [
+    "packages/*/src/**/*",
+    "apps/*/src/**/*",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "lib",
+    "es"
+  ]
+}
