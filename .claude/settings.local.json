@@ -13,7 +13,10 @@
       "Bash(npm:*)",
       "Bash(timeout:*)",
       "Bash(touch:*)",
-      "Bash(npm run check-packages:*)"
+      "Bash(npm run check-packages:*)",
+      "Bash(copy temp_installnode_modulesfs-extra . /s)",
+      "Bash(copy temp_installnode_moduleschalk . /s)",
+      "Bash(cp:*)"
     ],
     "deny": []
   }

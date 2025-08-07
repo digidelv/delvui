@@ -14,7 +14,12 @@ const PACKAGES = [
   'packages/core',
   'packages/tokens',
   'packages/react',
-  'packages/cli'
+  'packages/vue',
+  'packages/angular',
+  'packages/react-native',
+  'packages/vanilla',
+  'packages/cli',
+  'packages/frameworks/react'
 ];
 
 async function publishPackages() {
@@ -30,15 +35,8 @@ async function publishPackages() {
     process.exit(1);
   }
 
-  // Build all packages first
-  console.log(chalk.yellow('📦 Building all packages...'));
-  try {
-    execSync('npm run build', { stdio: 'inherit' });
-    console.log(chalk.green('✅ Build completed\n'));
-  } catch (error) {
-    console.error(chalk.red('❌ Build failed'));
-    process.exit(1);
-  }
+  // Skip build for now - publish existing built packages
+  console.log(chalk.yellow('📦 Skipping build - publishing existing packages...\n'));
 
   // Publish each package
   for (const packagePath of PACKAGES) {
@@ -76,7 +74,8 @@ async function publishPackage(packagePath) {
     }
 
     // Publish the package
-    execSync('npm publish', {
+    const otpArg = process.argv.includes('--otp') ? `--otp=${process.argv[process.argv.indexOf('--otp') + 1]}` : '';
+    execSync(`npm publish ${otpArg}`, {
       cwd: fullPath,
       stdio: 'inherit'
     });

@@ -77,5 +77,6 @@
   "homepage": "https://github.com/digidelv/delvui#readme",
   "bugs": {
     "url": "https://github.com/digidelv/delvui/issues"
-  }
+  },
+  "main": "jest.config.js"
 }
