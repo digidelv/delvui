@@ -1,0 +1,78 @@
+/* DelvUI Angular Icon Styles - Identical to React/Vue */
+
+.delv-icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* Color variants */
+.delv-icon--variant-default {
+  color: currentColor;
+}
+
+.delv-icon--variant-primary {
+  color: var(--color-primary-500);
+}
+
+.delv-icon--variant-secondary {
+  color: var(--color-gray-500);
+}
+
+.delv-icon--variant-success {
+  color: var(--color-success-500);
+}
+
+.delv-icon--variant-warning {
+  color: var(--color-warning-500);
+}
+
+.delv-icon--variant-danger {
+  color: var(--color-danger-500);
+}
+
+.delv-icon--variant-muted {
+  color: var(--color-gray-400);
+}
+
+/* Clickable icons */
+.delv-icon--clickable {
+  background: none;
+  border: none;
+  padding: 4px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--duration-150) var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delv-icon--clickable:hover {
+  background-color: var(--color-gray-100);
+}
+
+.delv-icon--clickable:active {
+  background-color: var(--color-gray-200);
+  transform: scale(0.95);
+}
+
+.delv-icon--clickable:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .delv-icon--clickable:hover {
+    background-color: var(--color-gray-800);
+  }
+  
+  .delv-icon--clickable:active {
+    background-color: var(--color-gray-700);
+  }
+  
+  .delv-icon--variant-muted {
+    color: var(--color-gray-500);
+  }
+}

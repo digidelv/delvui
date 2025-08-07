@@ -1,0 +1,43 @@
+/* DelvUI Vanilla JS Icon Styles */
+
+.delv-icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* Color variants */
+.delv-icon--variant-default {
+  color: currentColor;
+}
+
+.delv-icon--variant-primary {
+  color: var(--color-primary-500, #3b82f6);
+}
+
+.delv-icon--variant-secondary {
+  color: var(--color-gray-500, #6b7280);
+}
+
+.delv-icon--variant-success {
+  color: var(--color-success-500, #10b981);
+}
+
+.delv-icon--variant-warning {
+  color: var(--color-warning-500, #f59e0b);
+}
+
+.delv-icon--variant-danger {
+  color: var(--color-danger-500, #ef4444);
+}
+
+.delv-icon--variant-muted {
+  color: var(--color-gray-400, #9ca3af);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .delv-icon--variant-muted {
+    color: var(--color-gray-500, #6b7280);
+  }
+}

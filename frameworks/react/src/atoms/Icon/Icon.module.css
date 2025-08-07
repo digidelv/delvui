@@ -1,0 +1,78 @@
+/* DelvUI Icon Styles */
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* Color variants */
+.variant-default {
+  color: currentColor;
+}
+
+.variant-primary {
+  color: var(--color-primary-500);
+}
+
+.variant-secondary {
+  color: var(--color-gray-500);
+}
+
+.variant-success {
+  color: var(--color-success-500);
+}
+
+.variant-warning {
+  color: var(--color-warning-500);
+}
+
+.variant-danger {
+  color: var(--color-danger-500);
+}
+
+.variant-muted {
+  color: var(--color-gray-400);
+}
+
+/* Clickable icons */
+.clickable {
+  background: none;
+  border: none;
+  padding: 4px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--duration-150) var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clickable:hover {
+  background-color: var(--color-gray-100);
+}
+
+.clickable:active {
+  background-color: var(--color-gray-200);
+  transform: scale(0.95);
+}
+
+.clickable:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .clickable:hover {
+    background-color: var(--color-gray-800);
+  }
+  
+  .clickable:active {
+    background-color: var(--color-gray-700);
+  }
+  
+  .variant-muted {
+    color: var(--color-gray-500);
+  }
+}
