@@ -7,10 +7,8 @@
   "types": "lib/index.d.ts",
   "files": [
     "lib",
-    "es", 
-    "dist",
     "src",
-    "tokens.json"
+    "README.md"
   ],
   "exports": {
     ".": {
@@ -39,7 +37,7 @@
     "tailwind",
     "delvui"
   ],
-  "author": "Your Company",
+  "author": "DelvUI Team",
   "license": "MIT",
   "dependencies": {
     "color2k": "^2.0.0",
@@ -52,7 +50,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/digidelv/delvui",
+    "url": "https://github.com/delvui/delvui.git",
     "directory": "packages/tokens"
   },
   "publishConfig": {

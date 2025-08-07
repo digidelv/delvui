@@ -10,9 +10,8 @@
   },
   "files": [
     "lib",
-    "bin", 
-    "templates",
-    "boilerplates"
+    "bin",
+    "README.md"
   ],
   "scripts": {
     "build": "tsc",
@@ -35,7 +34,7 @@
     "angular",
     "nextjs"
   ],
-  "author": "Your Company",
+  "author": "DelvUI Team",
   "license": "MIT",
   "dependencies": {
     "commander": "^11.0.0",
@@ -67,7 +66,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/digidelv/delvui",
+    "url": "https://github.com/delvui/delvui.git",
     "directory": "packages/cli"
   },
   "publishConfig": {

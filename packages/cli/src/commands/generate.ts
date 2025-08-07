@@ -48,6 +48,12 @@ export async function generateCommand(
       case 'angular':
         await generateAngularComponent(type, name, outputDir, options);
         break;
+      case 'react-native':
+        await generateReactNativeComponent(type, name, outputDir, options);
+        break;
+      case 'vanilla':
+        await generateVanillaComponent(type, name, outputDir, options);
+        break;
       default:
         throw new Error(`Unsupported framework: ${framework}`);
     }
@@ -121,6 +127,34 @@ async function generateAngularComponent(
   await fs.writeFile(path.join(outputDir, `${kebabName}.component.scss`), styleContent);
 }
 
+async function generateReactNativeComponent(
+  type: string,
+  name: string,
+  outputDir: string,
+  options: GenerateOptions
+): Promise<void> {
+  const componentContent = getReactNativeComponentTemplate(type, name, options);
+  const indexContent = getReactNativeIndexTemplate(name);
+
+  await fs.writeFile(path.join(outputDir, `${name}.tsx`), componentContent);
+  await fs.writeFile(path.join(outputDir, 'index.ts'), indexContent);
+}
+
+async function generateVanillaComponent(
+  type: string,
+  name: string,
+  outputDir: string,
+  options: GenerateOptions
+): Promise<void> {
+  const componentContent = getVanillaComponentTemplate(type, name, options);
+  const styleContent = getVanillaStyleTemplate(name);
+  const indexContent = getVanillaIndexTemplate(name);
+
+  await fs.writeFile(path.join(outputDir, `${name}.js`), componentContent);
+  await fs.writeFile(path.join(outputDir, `${name}.css`), styleContent);
+  await fs.writeFile(path.join(outputDir, 'index.js'), indexContent);
+}
+
 async function generateTestFile(
   type: string,
   name: string,
@@ -142,6 +176,14 @@ async function generateTestFile(
     case 'angular':
       testContent = getAngularTestTemplate(type, name);
       testExt = 'component.spec.ts';
+      break;
+    case 'react-native':
+      testContent = getReactNativeTestTemplate(type, name);
+      testExt = 'test.tsx';
+      break;
+    case 'vanilla':
+      testContent = getVanillaTestTemplate(type, name);
+      testExt = 'test.js';
       break;
   }
 
@@ -167,6 +209,12 @@ async function generateStoryFile(
       break;
     case 'angular':
       storyContent = getAngularStoryTemplate(type, name);
+      break;
+    case 'react-native':
+      storyContent = getReactNativeStoryTemplate(type, name);
+      break;
+    case 'vanilla':
+      storyContent = getVanillaStoryTemplate(type, name);
       break;
   }
 
@@ -645,4 +693,295 @@ function getAtomicMetadata(type: string, name: string): string {
     default:
       return JSON.stringify(baseMetadata, null, 2);
   }
+}
+
+// React Native Templates
+function getReactNativeComponentTemplate(type: string, name: string, options: GenerateOptions): string {
+  return `/**
+ * DelvUI ${name} ${type}
+ * Generated with DelvUI CLI - React Native
+ */
+
+import React from 'react';
+import { View, StyleSheet, ViewProps } from 'react-native';
+import { ${type === 'atom' ? 'AtomProps' : type === 'molecule' ? 'MoleculeProps' : 'OrganismProps'} } from '@delvui/core';
+
+export interface ${name}Props extends ViewProps {
+  /** Test ID for testing */
+  testID?: string;
+  /** Children elements */
+  children?: React.ReactNode;
+}
+
+// Atomic Design Metadata
+export const ${name}${type.charAt(0).toUpperCase() + type.slice(1)}: ${type === 'atom' ? 'AtomProps' : type === 'molecule' ? 'MoleculeProps' : 'OrganismProps'} = {
+  id: '${name.toLowerCase()}-react-native',
+  name: '${name}',
+  level: '${type}',
+  category: 'display',
+  complexity: 1,
+  dependencies: [],
+  baseElement: 'View',
+  version: '1.0.0',
+  description: '${name} ${type} component for React Native',
+  tags: ['${type}', 'react-native', 'mobile']
+};
+
+/**
+ * ${name} component for React Native
+ */
+export const ${name}: React.FC<${name}Props> = ({
+  children,
+  testID,
+  style,
+  ...props
+}) => {
+  return (
+    <View
+      style={[styles.container, style]}
+      testID={testID}
+      {...props}
+    >
+      {children}
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    // Add your styles here
+  },
+});
+
+export default ${name};`;
+}
+
+function getReactNativeIndexTemplate(name: string): string {
+  return `export { ${name} } from './${name}';
+export type { ${name}Props } from './${name}';`;
+}
+
+function getReactNativeTestTemplate(type: string, name: string): string {
+  return `/**
+ * ${name} Component Tests - React Native
+ */
+
+import React from 'react';
+import { render } from '@testing-library/react-native';
+import { ${name} } from './${name}';
+import { Text } from 'react-native';
+
+describe('${name}', () => {
+  it('renders without crashing', () => {
+    const { getByText } = render(
+      <${name}>
+        <Text>Test content</Text>
+      </${name}>
+    );
+    expect(getByText('Test content')).toBeTruthy();
+  });
+
+  it('applies custom testID', () => {
+    const { getByTestId } = render(
+      <${name} testID="test-${name.toLowerCase()}">
+        <Text>Test</Text>
+      </${name}>
+    );
+    expect(getByTestId('test-${name.toLowerCase()}')).toBeTruthy();
+  });
+});`;
+}
+
+function getReactNativeStoryTemplate(type: string, name: string): string {
+  return `/**
+ * ${name} Stories - React Native
+ */
+
+import type { Meta, StoryObj } from '@storybook/react-native';
+import { ${name} } from './${name}';
+import { Text } from 'react-native';
+
+const meta: Meta<typeof ${name}> = {
+  title: '${type.charAt(0).toUpperCase() + type.slice(1)}s/${name}',
+  component: ${name},
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  render: (args) => (
+    <${name} {...args}>
+      <Text>Default ${name}</Text>
+    </${name}>
+  ),
+};`;
+}
+
+// Vanilla JS Templates
+function getVanillaComponentTemplate(type: string, name: string, options: GenerateOptions): string {
+  return `/**
+ * DelvUI ${name} ${type}
+ * Generated with DelvUI CLI - Vanilla JS
+ */
+
+import { AtomComponent } from '@delvui/core';
+import './${name}.css';
+
+export class ${name} extends AtomComponent {
+  static tagName = 'delv-${name.toLowerCase()}';
+  
+  static get observedAttributes() {
+    return ['class-name'];
+  }
+
+  constructor() {
+    super();
+    
+    this.className = '';
+  }
+
+  connectedCallback() {
+    this.render();
+    this.updateClasses();
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue !== newValue) {
+      const propName = name.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+      this[propName] = newValue;
+      
+      if (this.isConnected) {
+        this.render();
+        this.updateClasses();
+      }
+    }
+  }
+
+  render() {
+    this.innerHTML = \`
+      <div class="delv-${name.toLowerCase()}__content">
+        <slot></slot>
+      </div>
+    \`;
+
+    this.setAttribute('data-delvui-component', '${name.toLowerCase()}');
+    this.setAttribute('data-atomic-level', '${type}');
+    this.setAttribute('data-atomic-type', '${name.toLowerCase()}');
+  }
+
+  updateClasses() {
+    this.className = [
+      'delv-${name.toLowerCase()}',
+      this.className
+    ].filter(Boolean).join(' ');
+  }
+
+  // Atomic Design Metadata
+  static get atomMetadata() {
+    return {
+      id: '${name.toLowerCase()}-vanilla',
+      name: '${name}',
+      level: '${type}',
+      category: 'display',
+      complexity: 1,
+      dependencies: [],
+      baseElement: 'div',
+      version: '1.0.0',
+      description: '${name} ${type} component for Vanilla JS',
+      tags: ['${type}', 'vanilla', 'web-components']
+    };
+  }
+}
+
+// Define the custom element
+if (!customElements.get(${name}.tagName)) {
+  customElements.define(${name}.tagName, ${name});
+}
+
+export default ${name};`;
+}
+
+function getVanillaStyleTemplate(name: string): string {
+  return `/* DelvUI ${name} Styles */
+
+.delv-${name.toLowerCase()} {
+  display: block;
+  position: relative;
+}
+
+.delv-${name.toLowerCase()}__content {
+  /* Add your component styles here */
+}`;
+}
+
+function getVanillaIndexTemplate(name: string): string {
+  return `export { ${name} } from './${name}.js';`;
+}
+
+function getVanillaTestTemplate(type: string, name: string): string {
+  return `/**
+ * ${name} Component Tests - Vanilla JS
+ */
+
+import { ${name} } from './${name}';
+
+describe('${name}', () => {
+  let element;
+
+  beforeEach(() => {
+    element = new ${name}();
+    document.body.appendChild(element);
+  });
+
+  afterEach(() => {
+    if (element && element.parentNode) {
+      element.parentNode.removeChild(element);
+    }
+  });
+
+  it('should create element', () => {
+    expect(element).toBeDefined();
+    expect(element.tagName.toLowerCase()).toBe('delv-${name.toLowerCase()}');
+  });
+
+  it('should have correct atomic design attributes', () => {
+    expect(element.getAttribute('data-atomic-level')).toBe('${type}');
+    expect(element.getAttribute('data-atomic-type')).toBe('${name.toLowerCase()}');
+  });
+
+  it('should render content', () => {
+    element.innerHTML = 'Test content';
+    expect(element.textContent).toContain('Test content');
+  });
+});`;
+}
+
+function getVanillaStoryTemplate(type: string, name: string): string {
+  return `/**
+ * ${name} Stories - Vanilla JS
+ */
+
+import { ${name} } from './${name}';
+
+export default {
+  title: '${type.charAt(0).toUpperCase() + type.slice(1)}s/${name}',
+  component: ${name},
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+};
+
+export const Default = {
+  render: (args) => {
+    const element = document.createElement('delv-${name.toLowerCase()}');
+    element.innerHTML = 'Default ${name}';
+    return element;
+  },
+};`;
 }

@@ -1,0 +1,59 @@
+{
+  "name": "@delvui/vanilla",
+  "version": "1.0.0",
+  "description": "DelvUI Design System - Vanilla JS Web Components",
+  "main": "dist/index.js",
+  "module": "es/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "es",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:cjs": "tsc --project tsconfig.build.json --module commonjs --outDir dist",
+    "build:esm": "tsc --project tsconfig.build.json --module esnext --outDir es",
+    "build:types": "tsc --project tsconfig.build.json --declaration --emitDeclarationOnly --outDir dist",
+    "dev": "tsc --watch",
+    "clean": "rimraf dist es",
+    "lint": "eslint src --ext .js,.ts",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@delvui/core": "workspace:*",
+    "@delvui/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.0",
+    "rimraf": "^5.0.0",
+    "eslint": "^8.52.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "@testing-library/dom": "^9.3.0",
+    "@testing-library/jest-dom": "^6.1.0"
+  },
+  "keywords": [
+    "delvui",
+    "design-system",
+    "vanilla-js",
+    "web-components",
+    "custom-elements",
+    "ui",
+    "atomic-design"
+  ],
+  "author": "DelvUI Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/delvui/delvui.git",
+    "directory": "packages/vanilla"
+  },
+  "bugs": {
+    "url": "https://github.com/delvui/delvui/issues"
+  },
+  "homepage": "https://delvui.dev",
+  "publishConfig": {
+    "access": "public"
+  }
+}
