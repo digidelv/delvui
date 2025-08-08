@@ -3,9 +3,9 @@
  * Comprehensive Storybook documentation for Button component
  */
 
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
-import { Icon } from '../Icon/Icon';
+import { Button } from './Button.simple';
 
 const meta: Meta<typeof Button> = {
   title: 'Atoms/Button',
@@ -158,31 +158,11 @@ export const FullWidth: Story = {
   }
 };
 
-// With icons
-export const WithLeftIcon: Story = {
+// Icon buttons - simplified for demo
+export const WithIcon: Story = {
   args: {
-    children: 'Add Item',
-    icon: 'plus',
-    iconPosition: 'left',
+    children: '🎯 Add Item',
     variant: 'primary'
-  }
-};
-
-export const WithRightIcon: Story = {
-  args: {
-    children: 'Continue',
-    icon: 'arrow-right',
-    iconPosition: 'right',
-    variant: 'primary'
-  }
-};
-
-export const IconOnly: Story = {
-  args: {
-    icon: 'settings',
-    variant: 'outline',
-    shape: 'circle',
-    'aria-label': 'Settings'
   }
 };
 
@@ -193,7 +173,7 @@ export const AllShapes: Story = {
       <Button shape="rectangle">Rectangle</Button>
       <Button shape="rounded">Rounded</Button>
       <Button shape="pill">Pill Shape</Button>
-      <Button shape="circle" icon="heart" aria-label="Like" />
+      <Button shape="circle">❤️</Button>
     </div>
   )
 };

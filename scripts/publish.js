@@ -13,13 +13,8 @@ const chalk = require('chalk');
 const PACKAGES = [
   'packages/core',
   'packages/tokens',
-  'packages/react',
-  'packages/vue',
-  'packages/angular',
-  'packages/react-native',
-  'packages/vanilla',
-  'packages/cli',
-  'packages/frameworks/react'
+  'packages/frameworks/react',
+  'packages/cli'
 ];
 
 async function publishPackages() {

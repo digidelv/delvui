@@ -16,7 +16,15 @@
       "Bash(npm run check-packages:*)",
       "Bash(copy temp_installnode_modulesfs-extra . /s)",
       "Bash(copy temp_installnode_moduleschalk . /s)",
-      "Bash(cp:*)"
+      "Bash(cp:*)",
+      "Bash(yarn install)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm run:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm remove:*)",
+      "Bash(move main.js main.ts)",
+      "Bash(del:*)",
+      "Bash(npx storybook dev:*)"
     ],
     "deny": []
   }

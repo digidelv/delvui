@@ -1,17 +1,16 @@
 /**
- * DelvUI React - Button Atom
- * A flexible, accessible button component following atomic design principles
+ * DelvUI React Button Component
+ * A comprehensive, accessible button component following atomic design principles
  */
 
 import React, { forwardRef } from 'react';
-import { AtomProps } from '@delvui/core';
 import clsx from 'clsx';
-import { useDelvUITheme } from '../../providers';
-import { Spinner } from '../Spinner/Spinner';
+import styles from './Button.module.css';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+// Button Props Interface
+export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'size'> {
   /** Visual variant of the button */
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'success' | 'warning';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'success' | 'warning' | 'info';
   
   /** Size of the button */
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -19,8 +18,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   /** Loading state */
   loading?: boolean;
   
-  /** Icon element to display */
-  icon?: React.ReactNode;
+  /** Icon element or name */
+  icon?: React.ReactNode | string;
   
   /** Position of the icon */
   iconPosition?: 'left' | 'right';
@@ -29,16 +28,19 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   fullWidth?: boolean;
   
   /** Button shape */
-  shape?: 'default' | 'round' | 'circle';
+  shape?: 'rectangle' | 'rounded' | 'pill' | 'circle';
   
-  /** Custom className */
+  /** Enable motion animations */
+  animated?: boolean;
+  
+  /** Custom CSS classes */
   className?: string;
-  
-  /** Animation type */
-  animation?: 'none' | 'scale' | 'bounce' | 'pulse';
   
   /** Test ID for testing */
   testId?: string;
+  
+  /** Accessibility label */
+  'aria-label'?: string;
 }
 
 // Atomic Design Metadata
@@ -52,32 +54,44 @@ export const ButtonAtom: AtomProps = {
   baseElement: 'button',
   version: '1.0.0',
   description: 'A flexible, accessible button component for user interactions',
-  tags: ['interactive', 'clickable', 'form-control'],
+  tags: ['interactive', 'clickable', 'form-control', 'cta'],
   
   variants: [
     {
       name: 'primary',
-      description: 'Main call-to-action button',
+      description: 'Primary call-to-action button',
       props: { variant: 'primary', size: 'md' },
-      preview: '<Button variant="primary">Primary Button</Button>'
+      preview: '<Button variant="primary">Primary</Button>'
     },
     {
-      name: 'secondary', 
+      name: 'secondary',
       description: 'Secondary action button',
       props: { variant: 'secondary', size: 'md' },
-      preview: '<Button variant="secondary">Secondary Button</Button>'
+      preview: '<Button variant="secondary">Secondary</Button>'
     },
     {
       name: 'outline',
       description: 'Outlined button for subtle actions',
       props: { variant: 'outline', size: 'md' },
-      preview: '<Button variant="outline">Outline Button</Button>'
+      preview: '<Button variant="outline">Outline</Button>'
+    },
+    {
+      name: 'ghost',
+      description: 'Minimal button with no background',
+      props: { variant: 'ghost', size: 'md' },
+      preview: '<Button variant="ghost">Ghost</Button>'
     },
     {
       name: 'loading',
       description: 'Button in loading state',
       props: { loading: true, variant: 'primary' },
-      preview: '<Button loading variant="primary">Loading...</Button>'
+      preview: '<Button loading>Loading...</Button>'
+    },
+    {
+      name: 'with-icon',
+      description: 'Button with icon',
+      props: { icon: 'plus', variant: 'primary' },
+      preview: '<Button icon="plus">Add Item</Button>'
     }
   ],
   
@@ -89,13 +103,18 @@ export const ButtonAtom: AtomProps = {
     },
     {
       name: 'hover',
-      description: 'Hovered button state', 
-      props: { variant: 'primary', size: 'md' }
+      description: 'Hovered button state',
+      props: { variant: 'primary', size: 'md', className: 'hover' }
     },
     {
       name: 'active',
       description: 'Active/pressed button state',
-      props: { variant: 'primary', size: 'md' }
+      props: { variant: 'primary', size: 'md', className: 'active' }
+    },
+    {
+      name: 'focus',
+      description: 'Focused button state',
+      props: { variant: 'primary', size: 'md', className: 'focus' }
     },
     {
       name: 'disabled',
@@ -111,7 +130,7 @@ export const ButtonAtom: AtomProps = {
   
   accessibility: {
     ariaLabels: ['aria-label', 'aria-labelledby', 'aria-describedby'],
-    roles: ['button', 'menuitem', 'tab'],
+    roles: ['button', 'menuitem', 'tab', 'link'],
     keyboardNavigation: true,
     screenReaderSupport: true,
     colorContrastRatio: 4.5
@@ -127,229 +146,140 @@ export const ButtonAtom: AtomProps = {
   }
 };
 
+// Motion variants for animations
+const motionVariants = {
+  initial: { scale: 1 },
+  hover: { scale: 1.02 },
+  tap: { scale: 0.98 },
+  disabled: { scale: 1, opacity: 0.6 }
+};
+
 /**
- * Button component for user interactions
+ * Button Component
+ * 
+ * A highly customizable button component that supports multiple variants,
+ * sizes, states, and accessibility features.
  * 
  * @example
  * ```tsx
+ * // Basic usage
  * <Button variant="primary" size="md" onClick={handleClick}>
  *   Click me
  * </Button>
  * 
- * <Button variant="outline" icon={<Icon name="plus" />} iconPosition="left">
+ * // With icon
+ * <Button variant="outline" icon="plus" iconPosition="left">
  *   Add Item
  * </Button>
  * 
+ * // Loading state
  * <Button loading disabled>
  *   Processing...
  * </Button>
+ * 
+ * // Full width
+ * <Button variant="primary" fullWidth>
+ *   Submit Form
+ * </Button>
  * ```
  */
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
+export const Button = forwardRef<HTMLButtonElement, ButtonProps & MotionProps>(({
   children,
   variant = 'primary',
-  size = 'md', 
+  size = 'md',
   loading = false,
   icon,
   iconPosition = 'left',
   fullWidth = false,
-  shape = 'default',
+  shape = 'rectangle',
+  animated = true,
   className,
-  animation = 'scale',
   disabled,
   testId,
   type = 'button',
+  onClick,
   ...props
 }, ref) => {
   const theme = useDelvUITheme();
   
-  // Base classes
-  const baseClasses = [
-    // Core styling
-    'dv-atom',
-    'dv-atom-button', 
-    'inline-flex',
-    'items-center',
-    'justify-center',
-    'font-medium',
-    'transition-all',
-    'duration-200',
-    'ease-in-out',
-    'focus:outline-none',
-    'focus:ring-2',
-    'focus:ring-offset-2',
-    'active:scale-95',
-    
-    // Disabled state
-    (disabled || loading) && [
-      'opacity-60',
-      'cursor-not-allowed',
-      'pointer-events-none'
-    ],
-    
-    // Full width
-    fullWidth && 'w-full',
-    
-    // Animation
-    animation === 'scale' && 'hover:scale-105 active:scale-95',
-    animation === 'bounce' && 'hover:animate-bounce',
-    animation === 'pulse' && 'hover:animate-pulse'
-  ].filter(Boolean);
-
-  // Variant classes
-  const variantClasses = {
-    primary: [
-      'bg-primary-500',
-      'text-white',
-      'border-transparent',
-      'hover:bg-primary-600',
-      'focus:ring-primary-500',
-      'shadow-sm'
-    ],
-    secondary: [
-      'bg-secondary-100',
-      'text-secondary-900', 
-      'border-transparent',
-      'hover:bg-secondary-200',
-      'focus:ring-secondary-500'
-    ],
-    outline: [
-      'bg-transparent',
-      'text-primary-600',
-      'border-2',
-      'border-primary-500',
-      'hover:bg-primary-50',
-      'focus:ring-primary-500'
-    ],
-    ghost: [
-      'bg-transparent',
-      'text-primary-600',
-      'border-transparent',
-      'hover:bg-primary-50',
-      'focus:ring-primary-500'
-    ],
-    danger: [
-      'bg-red-500',
-      'text-white',
-      'border-transparent',
-      'hover:bg-red-600',
-      'focus:ring-red-500',
-      'shadow-sm'
-    ],
-    success: [
-      'bg-green-500',
-      'text-white', 
-      'border-transparent',
-      'hover:bg-green-600',
-      'focus:ring-green-500',
-      'shadow-sm'
-    ],
-    warning: [
-      'bg-yellow-500',
-      'text-white',
-      'border-transparent',
-      'hover:bg-yellow-600',
-      'focus:ring-yellow-500',
-      'shadow-sm'
-    ]
-  };
-
-  // Size classes
-  const sizeClasses = {
-    xs: ['px-2.5', 'py-1.5', 'text-xs', 'leading-4'],
-    sm: ['px-3', 'py-2', 'text-sm', 'leading-4'], 
-    md: ['px-4', 'py-2.5', 'text-sm', 'leading-5'],
-    lg: ['px-6', 'py-3', 'text-base', 'leading-6'],
-    xl: ['px-8', 'py-4', 'text-lg', 'leading-7']
-  };
-
-  // Shape classes  
-  const shapeClasses = {
-    default: {
-      xs: 'rounded',
-      sm: 'rounded-md',
-      md: 'rounded-md', 
-      lg: 'rounded-lg',
-      xl: 'rounded-lg'
+  // Memoize class combinations for performance
+  const buttonClasses = useMemo(() => clsx([
+    styles.button,
+    styles[`variant-${variant}`],
+    styles[`size-${size}`],
+    styles[`shape-${shape}`],
+    {
+      [styles.fullWidth]: fullWidth,
+      [styles.loading]: loading,
+      [styles.disabled]: disabled || loading,
+      [styles.animated]: animated,
+      [styles.withIcon]: !!icon,
+      [styles[`icon-${iconPosition}`]]: !!icon,
     },
-    round: {
-      xs: 'rounded-full',
-      sm: 'rounded-full',
-      md: 'rounded-full',
-      lg: 'rounded-full', 
-      xl: 'rounded-full'
-    },
-    circle: 'rounded-full aspect-square p-0'
-  };
-
-  // Compile classes
-  const buttonClasses = clsx([
-    ...baseClasses,
-    ...variantClasses[variant],
-    ...sizeClasses[size],
-    shape === 'circle' ? shapeClasses.circle : shapeClasses[shape][size],
     className
-  ]);
+  ]), [variant, size, shape, fullWidth, loading, disabled, animated, icon, iconPosition, className]);
 
-  // Icon spacing based on size
-  const iconSpacing = {
-    xs: 'gap-1',
-    sm: 'gap-1.5', 
-    md: 'gap-2',
-    lg: 'gap-2.5',
-    xl: 'gap-3'
+  // Handle click with loading state
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (loading || disabled) {
+      event.preventDefault();
+      return;
+    }
+    onClick?.(event);
   };
 
-  const renderContent = () => {
+  // Render icon based on type
+  const renderIcon = () => {
     if (loading) {
-      return (
-        <>
-          <Spinner size={size} className="animate-spin" />
-          {children && <span>{children}</span>}
-        </>
-      );
+      return <Spinner size={size} className={styles.spinner} />;
     }
-
-    const hasIcon = icon && !loading;
-    const hasChildren = React.Children.count(children) > 0;
-
-    if (!hasIcon && !hasChildren) {
-      return null;
+    
+    if (typeof icon === 'string') {
+      return <Icon name={icon} size={size} />;
     }
-
-    if (hasIcon && hasChildren) {
-      return (
-        <div className={clsx('flex items-center', iconSpacing[size])}>
-          {iconPosition === 'left' && <span className="flex-shrink-0">{icon}</span>}
-          <span>{children}</span>
-          {iconPosition === 'right' && <span className="flex-shrink-0">{icon}</span>}
-        </div>
-      );
-    }
-
-    if (hasIcon && !hasChildren) {
-      return <span className="flex-shrink-0">{icon}</span>;
-    }
-
-    return <span>{children}</span>;
+    
+    return icon;
   };
+
+  // Determine motion props
+  const motionProps = animated ? {
+    variants: motionVariants,
+    initial: 'initial',
+    whileHover: disabled || loading ? undefined : 'hover',
+    whileTap: disabled || loading ? undefined : 'tap',
+    animate: disabled || loading ? 'disabled' : 'initial',
+    transition: { duration: 0.2, ease: 'easeInOut' }
+  } : {};
+
+  const ButtonComponent = animated ? motion.button : 'button';
 
   return (
-    <button
+    <ButtonComponent
       ref={ref}
       type={type}
       className={buttonClasses}
       disabled={disabled || loading}
+      onClick={handleClick}
+      data-delvui-component="button"
       data-atomic-level="atom"
       data-atomic-type="button"
       data-variant={variant}
       data-size={size}
       data-loading={loading}
       data-testid={testId}
+      aria-disabled={disabled || loading}
+      {...motionProps}
       {...props}
     >
-      {renderContent()}
-    </button>
+      <span className={styles.content}>
+        {iconPosition === 'left' && renderIcon()}
+        {children && <span className={styles.text}>{children}</span>}
+        {iconPosition === 'right' && renderIcon()}
+      </span>
+      
+      {/* Ripple effect container */}
+      {animated && <span className={styles.ripple} />}
+    </ButtonComponent>
   );
 });
 

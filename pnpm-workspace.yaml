@@ -1,0 +1,5 @@
+packages:
+  - "packages/core"
+  - "packages/tokens" 
+  - "packages/frameworks/react"
+  - "packages/cli"

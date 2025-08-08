@@ -1,36 +1,97 @@
 /**
- * DelvUI React - Spinner Atom
+ * DelvUI React Spinner Component
+ * Loading indicator with multiple variants and sizes
  */
 
 import React from 'react';
 import clsx from 'clsx';
+import { AtomProps } from '@delvui/core';
+import styles from './Spinner.module.css';
 
 export interface SpinnerProps {
+  /** Size of the spinner */
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  
+  /** Visual variant */
+  variant?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+  
+  /** Loading text for accessibility */
+  label?: string;
+  
+  /** Custom CSS classes */
   className?: string;
+  
+  /** Test ID */
+  testId?: string;
 }
 
-export const Spinner: React.FC<SpinnerProps> = ({ 
-  size = 'md', 
-  className 
+// Atomic Design Metadata
+export const SpinnerAtom: AtomProps = {
+  id: 'spinner',
+  name: 'Spinner',
+  level: 'atom',
+  category: 'feedback',
+  complexity: 1,
+  dependencies: [],
+  baseElement: 'div',
+  version: '1.0.0',
+  description: 'A loading indicator to show ongoing processes',
+  tags: ['loading', 'progress', 'feedback'],
+  
+  variants: [
+    {
+      name: 'default',
+      description: 'Default spinner',
+      props: { size: 'md' },
+      preview: '<Spinner />'
+    },
+    {
+      name: 'small',
+      description: 'Small spinner for buttons',
+      props: { size: 'sm' },
+      preview: '<Spinner size="sm" />'
+    },
+    {
+      name: 'primary',
+      description: 'Primary colored spinner',
+      props: { variant: 'primary' },
+      preview: '<Spinner variant="primary" />'
+    }
+  ]
+};
+
+/**
+ * Spinner Component
+ */
+export const Spinner: React.FC<SpinnerProps> = ({
+  size = 'md',
+  variant = 'default',
+  label = 'Loading...',
+  className,
+  testId = 'spinner'
 }) => {
-  const sizeClasses = {
-    xs: 'w-3 h-3',
-    sm: 'w-4 h-4', 
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
-    xl: 'w-8 h-8'
-  };
+  const spinnerClasses = clsx([
+    styles.spinner,
+    styles[`size-${size}`],
+    styles[`variant-${variant}`],
+    className
+  ]);
 
   return (
     <div
-      className={clsx(
-        'inline-block animate-spin rounded-full border-2 border-solid border-current border-r-transparent',
-        sizeClasses[size],
-        className
-      )}
+      className={spinnerClasses}
+      role="status"
+      aria-label={label}
+      data-testid={testId}
+      data-delvui-component="spinner"
       data-atomic-level="atom"
-      data-atomic-type="spinner"
-    />
+    >
+      <div className={styles.circle} />
+      <span className={styles.srOnly}>{label}</span>
+    </div>
   );
 };
+
+Spinner.displayName = 'Spinner';
+
+export default Spinner;
